@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 
 class UserData {
   String name;
-
-  UserData({required this.name});
+  int age;
+  Color color;
+  UserData({
+    required this.name,
+    required this.age,
+    required this.color,
+  });
 }
 
 class StateContainer extends StatefulWidget {
@@ -31,9 +36,15 @@ class StateContainerState extends State<StateContainer> {
     user = widget.user;
   }
 
-  void updateUser({String? name}) {
+  void updateUser({
+    String? name,
+    int? age,
+    Color? color,
+  }) {
     setState(() {
       user.name = name ?? user.name;
+      user.age = age ?? user.age;
+      user.color = color ?? user.color;
     });
   }
 

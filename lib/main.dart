@@ -4,7 +4,7 @@ import 'ContainarState.dart';
 import 'HomePage.dart';
 
 void main() {
-  UserData userData = UserData(name: 'rawan');
+  UserData userData = UserData(name: 'rawan', age: 23, color: Colors.lime);
   runApp(StateContainer(
     user: userData, // Provide the user argument here
     child: const MyApp(),
