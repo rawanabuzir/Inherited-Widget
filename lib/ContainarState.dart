@@ -2,58 +2,65 @@ import 'package:flutter/material.dart';
 
 class UserData {
   String name;
+  int age;
+  Color color;
 
-  UserData({required this.name});
+  UserData({
+    required this.name,
+    required this.age,
+    required this.color,
+  });
 }
 
-class StateContainer extends StatefulWidget {
+class StateComtainer extends StatefulWidget {
+  final UserData data;
   final Widget child;
-  final UserData user;
-  StateContainer({required this.child, required this.user});
+  const StateComtainer({Key? key, required this.data, required this.child})
+      : super(key: key);
 
-  static StateContainerState? of(BuildContext context) {
+  static dynamic of(BuildContext context) {
     return (context
                 .dependOnInheritedWidgetOfExactType<InheritedStateContainer>()
             as InheritedStateContainer)
-        .data;
+        .info;
   }
 
   @override
-  State<StatefulWidget> createState() => StateContainerState();
+  State<StateComtainer> createState() => StateComtainerState();
 }
 
-class StateContainerState extends State<StateContainer> {
-  late UserData user;
+class StateComtainerState extends State<StateComtainer> {
+  late UserData data;
 
   @override
   void initState() {
+    data = widget.data;
     super.initState();
-    user = widget.user;
   }
-
   void updateUser({String? name}) {
     setState(() {
-      user.name = name ?? user.name;
+      data.name = name ?? data.name;
     });
   }
-
   @override
   Widget build(BuildContext context) {
     return InheritedStateContainer(
-      data: this,
+      info: this,
       child: widget.child,
+
     );
   }
 }
 
 class InheritedStateContainer extends InheritedWidget {
-  final StateContainerState data;
+  final StateComtainerState info;
+
   const InheritedStateContainer({
     Key? key,
-    required this.data,
     required Widget child,
+    required this.info,
   }) : super(key: key, child: child);
 
   @override
-  bool updateShouldNotify(InheritedWidget oldWidget) => true;
+  bool updateShouldNotify(covariant InheritedWidget oldWidget) => true;
 }

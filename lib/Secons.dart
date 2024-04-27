@@ -7,10 +7,13 @@ class SeconsSecons extends StatelessWidget {
   SeconsSecons({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final containerState = StateContainer.of(context);
-    UserData userData = containerState?.user ?? UserData(name: '');
+    final containerState = StateComtainer.of(context);
+    UserData userData =
+        containerState?.data ?? UserData(name: '', age: 0, color: Colors.white);
     return Scaffold(
-      appBar: AppBar(title: const Text('Inherited Widget'),),
+      appBar: AppBar(
+        title: const Text('Inherited Widget'),
+      ),
       body: Container(
         width: double.infinity,
         height: double.infinity,
@@ -32,7 +35,6 @@ class SeconsSecons extends StatelessWidget {
                       },
                       child: const Text('Move To The Next Page')),
                 ),
-
                 Expanded(
                   child: ElevatedButton(
                       onPressed: () {
