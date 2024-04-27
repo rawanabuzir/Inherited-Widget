@@ -14,43 +14,44 @@ class _therddState extends State<therdd> {
   TextEditingController dataa = TextEditingController();
 
   Color color = Colors.black;
+  //
+  // void updateTheContainer() {
+  //   String name = dataa.text;
+  //   int age = int.tryParse(ddata.text) ?? 0;
+  //   String hexColor = ddatta.text;
+  //
+  //   // Check if the input is a valid hexadecimal color string
+  //   if (hexColor.length != 6 || !RegExp(r'^[0-9a-fA-F]+$').hasMatch(hexColor)) {
+  //     // Show an error message and return without updating the container
+  //     showDialog(
+  //       context: context,
+  //       builder: (context) => AlertDialog(
+  //         title: Text('Error'),
+  //         content: Text('Please enter a valid hexadecimal color (e.g., "FF0000" for red)'),
+  //         actions: [
+  //           TextButton(
+  //             onPressed: () => Navigator.of(context).pop(),
+  //             child: Text('OK'),
+  //           ),
+  //         ],
+  //       ),
+  //     );
+  //     return;
+  //   }
 
-  void updateTheContainer() {
-    String name = dataa.text;
-    int age = int.tryParse(ddata.text) ?? 0;
-    String hexColor = ddatta.text;
+    // Color newColor = Color(int.parse(hexColor, radix: 16));
+    // var containerState = StateComtainer.of(context);
+    // if (containerState != null) {
+    //   containerState.updateUser(name: name, age: age, color: newColor);
+    //   setState(() {});
+    // }
 
-    // Check if the input is a valid hexadecimal color string
-    if (hexColor.length != 6 || !RegExp(r'^[0-9a-fA-F]+$').hasMatch(hexColor)) {
-      // Show an error message and return without updating the container
-      showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: Text('Error'),
-          content: Text('Please enter a valid hexadecimal color (e.g., "FF0000" for red)'),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(),
-              child: Text('OK'),
-            ),
-          ],
-        ),
-      );
-      return;
-    }
 
-    Color newColor = Color(int.parse(hexColor, radix: 16));
-    var containerState = StateContainer.of(context);
-    if (containerState != null) {
-      containerState.updateUser(name: name, age: age, color: newColor);
-      setState(() {});
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
-    final containerState = StateContainer.of(context);
-    UserData? userData = containerState?.user;
+    final containerState = StateComtainer.of(context);
+    UserData? userData = containerState?.data;
 
     return Scaffold(
       appBar: AppBar(
@@ -109,7 +110,7 @@ class _therddState extends State<therdd> {
                   ElevatedButton(
                       onPressed: () {
                         // Navigator.of(context).pop();
-                        updateTheContainer();
+                        // updateTheContainer();
                         // setState(() {});
                       },
                       child: const Text(' Save ')),

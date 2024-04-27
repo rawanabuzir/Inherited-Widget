@@ -7,9 +7,9 @@ class SeconsSecons extends StatelessWidget {
   SeconsSecons({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final containerState = StateContainer.of(context);
+    final containerState = StateComtainer.of(context);
     UserData userData =
-        containerState?.user ?? UserData(name: '', age: 0, color: Colors.white);
+        containerState?.data ?? UserData(name: '', age: 0, color: Colors.white);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Inherited Widget'),
